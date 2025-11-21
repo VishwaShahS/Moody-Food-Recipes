@@ -1,0 +1,68 @@
+package com.example.vibecheck;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends AppCompatActivity {
+ Spinner vibeSpinner;
+ Button showRecipeButton, viewRecipeButton;
+ TextView recipeText, detailedRecipeText;
+ String[] vibes = {"Cozy Rainy Day", "Hungover", "Lazy Sunday", "Feeling Healthy", "Chill 
+Vibes"};
+ String[] recipes = {
+ "Mushroom Soup & Bread", // Cozy Rainy Day
+ "Veggie Tacos", // Hungover
+ "Avocado Toast & Roasted Veggies", // Lazy Sunday
+ "Zucchini Noodles", // Feeling Healthy
+ "Hot Chocolate" // Chill Vibes};
+ // Detailed recipes for each dish
+ String[] detailedRecipes = {"Mushroom Soup & Bread:\n1. Sauté onions and garlic in a pot.\n2. Add chopped 
+mushrooms and cook until soft.\n3. Add vegetable broth, salt, and pepper.\n4. Simmer for 15 
+minutes, blend to desired consistency.\n5. Serve with crusty bread.",
+ "Veggie Tacos:\n1. Sauté your favorite veggies like bell peppers, onions, and 
+zucchini.\n2. Heat tortillas.\n3. Fill tortillas with sautéed veggies.\n4. Add your favorite toppings 
+like lettuce, salsa, and cheese.",
+ "Avocado Toast & Roasted Veggies:\n1. Roast veggies like sweet potatoes and 
+carrots.\n2. Toast your bread.\n3. Smash avocado and spread on toast.\n4. Top with roasted 
+veggies and season with salt and pepper.",
+ "Zucchini Noodles:\n1. Use a spiralizer to create zucchini noodles.\n2. Sauté zucchini 
+noodles with olive oil, garlic, and herbs.\n3. Serve with your favorite sauce (like marinara or 
+pesto).",
+ "Hot Chocolate:\n1. Heat milk in a pot.\n2. Stir in cocoa powder, sugar, and a pinch of 
+salt.\n3. Bring to a simmer while stirring.\n4. Top with whipped cream or marshmallows." };
+ @Override
+ protected void onCreate(Bundle savedInstanceState) {
+ super.onCreate(savedInstanceState);
+ setContentView(R.layout.activity_main);
+ vibeSpinner = findViewById(R.id.vibeSpinner);
+showRecipeButton = findViewById(R.id.showRecipeButton);
+ viewRecipeButton = findViewById(R.id.viewRecipeButton);
+ recipeText = findViewById(R.id.recipeText);
+ detailedRecipeText = findViewById(R.id.detailedRecipeText);
+ // Set up spinner adapter for vibes
+ ArrayAdapter<String> vibeAdapter = new ArrayAdapter<>(this, 
+android.R.layout.simple_spinner_item, vibes);
+vibeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+ vibeSpinner.setAdapter(vibeAdapter);
+ // Set button click listener to show recipe based on selected vibe
+ showRecipeButton.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ int selectedVibePosition = vibeSpinner.getSelectedItemPosition();
+ String selectedRecipe = recipes[selectedVibePosition];
+ recipeText.setText("Recipe for " + vibes[selectedVibePosition] + ":\n" + 
+selectedRecipe);
+ detailedRecipeText.setVisibility(View.GONE); // Hide detailed recipe initially }
+ });// View the detailed recipe when clicked
+ viewRecipeButton.setOnClickListener(new View.OnClickListener() {
+ @Override
+ public void onClick(View v) {
+ int selectedVibePosition = vibeSpinner.getSelectedItemPosition();
+ detailedRecipeText.setText(detailedRecipes[selectedVibePosition]);
+ detailedRecipeText.setVisibility(View.VISIBLE); // Show detailed recipe
+ } });
+ }
+}
