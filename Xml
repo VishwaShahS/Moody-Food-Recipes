@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><
+RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"    
+android:layout_width="match_parent"    
+android:layout_height="match_parent">        
+<Spinner        
+android:id="@+id/vibeSpinner"     
+android:layout_width="wrap_content"     
+android:layout_height="wrap_content"       
+android:layout_centerHorizontal="true"       
+android:layout_marginTop="50dp"/>    
+<Button        android:id="@+id/showRecipeButton"      
+android:layout_width="wrap_content"      
+android:layout_height="wrap_content"       
+android:text="Show Recipe"        
+android:layout_below="@id/vibeSpinner"     
+android:layout_centerHorizontal="true"    
+android:layout_marginTop="20dp"/>       
+ <Button        android:id="@+id/viewRecipeButton"      
+android:layout_width="wrap_content"        
+android:layout_height="wrap_content"       
+android:text="View Recipe"       
+android:layout_below="@id/showRecipeButton"       
+android:layout_centerHorizontal="true"      
+android:layout_marginTop="20dp"/>   
+ <TextView        android:id="@+id/recipeText"        android:layout_width="wrap_content"        android:layout_height="wrap_content"        android:text="Recipe will appear here"        android:layout_below="@id/viewRecipeButton"        android:layout_centerHorizontal="true"        android:layout_marginTop="30dp"        android:textSize="18sp"        android:textColor="#333"/>    <TextView        android:id="@+id/detailedRecipeText"        android:layout_width="wrap_content"        android:layout_height="wrap_content"        android:text=""        android:layout_below="@id/recipeText"        android:layout_centerHorizontal="true"        android:layout_marginTop="20dp"        android:textSize="16sp"        android:textColor="#555"        android:visibility="gone"/>
+</RelativeLayout>
